@@ -2,7 +2,7 @@
 // Single-file React component (default export) ready to paste into a Create React App / Vite project
 // TailwindCSS is used for styling. Make sure Tailwind is configured in the project.
 
-import React from "react";
+import React, { useState } from "react";
 
 // Replace these constants with your real links/emails
 const SITE = {
@@ -64,18 +64,53 @@ const SKILLS = [
 ];
 
 export default function Portfolio() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
     return (
-      <div class="min-h-screen bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-950 text-gray-100 antialiased">
+      <div className="min-h-screen bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-950 text-gray-100 antialiased">
             <header className="max-w-5xl mx-auto p-6 sm:p-12">
                 <nav className="flex items-center justify-between">
                     <div className="text-2xl font-semibold">{SITE.name}</div>
+
+                    {/* Desktop links (hidden on small screens) */}
                     <div className="space-x-4 text-sm hidden sm:flex">
                         <a href="#about" className="hover:underline">About</a>
                         <a href="#projects" className="hover:underline">Projects</a>
                         <a href="#skills" className="hover:underline">Skills</a>
                         <a href="#contact" className="hover:underline">Contact</a>
                     </div>
+
+                    {/* Mobile hamburger */}
+                    <div className="sm:hidden">
+                      <button
+                        onClick={() => setMenuOpen((s) => !s)}
+                        aria-label="Toggle menu"
+                        className="p-2 rounded-md hover:bg-gray-800 focus:outline-none"
+                      >
+                        {menuOpen ? (
+                          // Close icon (X)
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        ) : (
+                          // Hamburger icon
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                          </svg>
+                        )}
+                      </button>
+                    </div>
                 </nav>
+
+                {/* Mobile dropdown menu */}
+                {menuOpen && (
+                  <div className="sm:hidden mt-3 space-y-2 bg-transparent">
+                    <a href="#about" onClick={() => setMenuOpen(false)} className="block px-2 py-2 rounded hover:bg-gray-800">About</a>
+                    <a href="#projects" onClick={() => setMenuOpen(false)} className="block px-2 py-2 rounded hover:bg-gray-800">Projects</a>
+                    <a href="#skills" onClick={() => setMenuOpen(false)} className="block px-2 py-2 rounded hover:bg-gray-800">Skills</a>
+                    <a href="#contact" onClick={() => setMenuOpen(false)} className="block px-2 py-2 rounded hover:bg-gray-800">Contact</a>
+                  </div>
+                )}
             </header>
 
             <main className="max-w-5xl mx-auto px-6 pb-24">
@@ -154,10 +189,12 @@ export default function Portfolio() {
                                 <div className="p-5">
                                     <div className="flex items-center justify-between">
                                         <h3 className="font-semibold text-lg">{p.title}</h3>
-                                        <a href={p.Github} className="text-xs text-indigo-300 hover:underline">GitHub</a>
-                                        {p.Live && (
+                                        <div className="flex items-center space-x-3">
+                                          <a href={p.Github} className="text-xs text-indigo-300 hover:underline">GitHub</a>
+                                          {p.Live && (
                                             <a href={p.Live} className="text-xs text-green-400 hover:underline">Live</a>
-                                        )}
+                                          )}
+                                        </div>
                                     </div>
                                     <p className="mt-2 text-sm text-gray-300">{p.desc}</p>
                                     <div className="mt-3 flex flex-wrap gap-2">
@@ -167,8 +204,6 @@ export default function Portfolio() {
                                     </div>
                                 </div>
                             </article>
-
-
                         ))}
                     </div>
                 </section>
@@ -199,6 +234,3 @@ export default function Portfolio() {
         </div>
     );
 }
-
-
-
