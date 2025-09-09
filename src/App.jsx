@@ -7,9 +7,9 @@ import React from "react";
 // Replace these constants with your real links/emails
 const SITE = {
     name: "Sourav Angre",
-    title: "Cloud & DevOps Enthusiast | Flask · AWS · Docker · CI/CD",
+    title: "Cloud & DevOps Enthusiast | Python · AWS · Docker · CI/CD",
     location: "Pune, India",
-    email: "sourav@example.com",
+    email: "souravangre17@gmail.com",
     github: "https://github.com/SouravAngre",
     linkedin: "https://linkedin.com/in/sourav-angre",
     twitter: "https://twitter.com/sourav",
@@ -17,47 +17,47 @@ const SITE = {
 
 const PROJECTS = [
     {
-        title: "AWS Lift & Shift Deployment",
-        desc:
-            "Lift-and-shift deployment of a Flask app: Dockerized, served on EC2, MySQL on EC2, media on S3, DNS on Route 53.",
-        tech: ["Flask", "Docker", "AWS EC2", "S3", "Route53"],
-        link: "#",
-    },
-    {
-        title: "Fitstore — Flask E-commerce",
-        desc:
-            "A simple e-commerce app with authentication, cart, order history and a DevOps-focused CI/CD pipeline (Jenkins + Docker).",
-        tech: ["Flask", "SQLite/MySQL", "Docker", "Jenkins", "Nginx"],
-        link: "#",
-    },
-    {
         title: "Internshala Job Alert App (Scraper)",
         desc:
-            "A job-scraping automation that collects Internshala listings, saves CSVs and emails alerts to users based on preferences.",
+            "A job-scraping automation tool that collects Internshala listings, saves CSVs and emails alerts to users based on preferences.",
         tech: ["Python", "Flask", "BeautifulSoup", "SMTP"],
-        link: "#",
+        Live: "https://intern-alert-app-v1.onrender.com",
+        Github: "https://github.com/souravangre/Internshala_Job_Scraper",
+        image: "/internshala.png",
     },
     {
-        title: "City Companion",
+        title: "AWS VPC secure web hosting",
         desc:
-            "Node.js + MongoDB app integrating WeatherAPI, NewsAPI and Restaurants API to help users explore a city programmatically.",
-        tech: ["Node.js", "MongoDB", "External APIs"],
-        link: "#",
+            "Designed and deployed a secure, cost-effective cloud hosting architecture using AWS services",
+        tech: ["AWS EC2", "S3", "RDS", "VPC", "ALB", "NAT Gateway"],
+        Github: "https://github.com/souravangre/AWS-VPC",
+        image: "/aws.png",
     },
     {
-        title: "Expense Tracker (CSV + Visuals)",
-        desc: "Upload CSV transactions, categorize automatically and visualize spending trends.",
-        tech: ["Flask", "Pandas", "Charting"],
-        link: "#",
+        title: "Multi User Chat-App",
+        desc:
+            "A simple multi-client chat application built using Python’s socket programming and SQLite for user authentication.",
+        tech: ["Python", "Socket programming", "Threading", "sqlite3"],
+        Github: "https://github.com/souravangre/Multi-User-Chat-App",
+        image: "/chat.png",
     },
+    {
+        title: "File Storing/Sharing system (Ongoing)",
+        desc:
+            "A file storage and sharing system in Python is a web application that allows users to securely upload, download, and manage access to digital files.",
+        tech: ["Python", "SQLAlchemy/MySQL", " File Handling", "Basic Frontend (HTML/CSS/JavaScript)", "System Design"],
+        Github: "https://github.com/souravangre/cloud-storage-system",
+        image: "/storage.png",
+    },
+
 ];
 
 const SKILLS = [
-    "AWS (EC2, S3, Route53)",
+    "Python, Java",
+    "AWS (EC2, S3, VPC, RDS, ALB, Autoscaling, Elastic-BeanStalk)",
     "Docker & Containerization",
     "CI/CD (Jenkins, GitHub Actions)",
     "Flask / Django",
-    "Node.js & MongoDB",
     "SQL (MySQL, SQLite)",
     "Linux & Networking",
     "Basic Frontend (HTML/CSS/JS)",
@@ -65,7 +65,7 @@ const SKILLS = [
 
 export default function Portfolio() {
     return (
-        <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-900 to-gray-800 text-gray-100 antialiased">
+      <div class="min-h-screen bg-gradient-to-b from-blue-950 via-blue-900 to-indigo-950 text-gray-100 antialiased">
             <header className="max-w-5xl mx-auto p-6 sm:p-12">
                 <nav className="flex items-center justify-between">
                     <div className="text-2xl font-semibold">{SITE.name}</div>
@@ -91,7 +91,7 @@ export default function Portfolio() {
                             <a href={`mailto:${SITE.email}`} className="px-4 py-2 bg-indigo-600 rounded-md hover:bg-indigo-500">Email</a>
                         </div>
 
-                        <div className="mt-6 text-sm text-gray-300">Based in {SITE.location} • 4th-year engineering student • 21 years old</div>
+                        <div className="mt-6 text-sm text-gray-300">Based in {SITE.location} • 4th-year engineering student </div>
                     </div>
 
                     <div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-2xl p-6 shadow-lg">
@@ -101,14 +101,14 @@ export default function Portfolio() {
                                 <div className="mr-3 font-mono text-xs text-indigo-300">01</div>
                                 <div>
                                     <div className="font-semibold">Cloud & DevOps</div>
-                                    <div className="text-sm text-gray-300">Deployments, automation, CI/CD, Docker</div>
+                                    <div className="text-sm text-gray-300">AWS, Deployments, automation, CI/CD, Docker</div>
                                 </div>
                             </li>
                             <li className="flex items-start">
                                 <div className="mr-3 font-mono text-xs text-indigo-300">02</div>
                                 <div>
                                     <div className="font-semibold">Backend</div>
-                                    <div className="text-sm text-gray-300">Flask, Node.js, SQL, REST APIs</div>
+                                    <div className="text-sm text-gray-300">Flask, Django, SQL, REST APIs</div>
                                 </div>
                             </li>
                             <li className="flex items-start">
@@ -137,18 +137,38 @@ export default function Portfolio() {
 
                     <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                         {PROJECTS.map((p, i) => (
-                            <article key={i} className="bg-gray-800 rounded-xl p-5 hover:shadow-xl transition-shadow">
-                                <div className="flex items-center justify-between">
-                                    <h3 className="font-semibold text-lg">{p.title}</h3>
-                                    <a href={p.link} className="text-xs text-indigo-300">View</a>
-                                </div>
-                                <p className="mt-2 text-sm text-gray-300">{p.desc}</p>
-                                <div className="mt-3 flex flex-wrap gap-2">
-                                    {p.tech.map((t, j) => (
-                                        <span key={j} className="text-xs font-medium px-2 py-1 bg-gray-700 rounded">{t}</span>
-                                    ))}
+                            <article
+                                key={i}
+                                className="bg-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-shadow"
+                            >
+                                {/* Project Image */}
+                                {p.image && (
+                                    <img
+                                        src={p.image}
+                                        alt={p.title}
+                                        className="w-full h-40 object-cover"
+                                    />
+                                )}
+
+                                {/* Project Content */}
+                                <div className="p-5">
+                                    <div className="flex items-center justify-between">
+                                        <h3 className="font-semibold text-lg">{p.title}</h3>
+                                        <a href={p.Github} className="text-xs text-indigo-300 hover:underline">GitHub</a>
+                                        {p.Live && (
+                                            <a href={p.Live} className="text-xs text-green-400 hover:underline">Live</a>
+                                        )}
+                                    </div>
+                                    <p className="mt-2 text-sm text-gray-300">{p.desc}</p>
+                                    <div className="mt-3 flex flex-wrap gap-2">
+                                        {p.tech.map((t, j) => (
+                                            <span key={j} className="text-xs font-medium px-2 py-1 bg-gray-700 rounded">{t}</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </article>
+
+
                         ))}
                     </div>
                 </section>
@@ -172,30 +192,13 @@ export default function Portfolio() {
                         <a href={SITE.github} target="_blank" rel="noreferrer" className="px-5 py-3 bg-gray-800 border border-gray-700 rounded-md inline-block">GitHub Profile</a>
                         <a href={SITE.linkedin} target="_blank" rel="noreferrer" className="px-5 py-3 bg-gray-800 border border-gray-700 rounded-md inline-block">LinkedIn</a>
                     </div>
-
-                    <div className="mt-6 text-sm text-gray-400">Prefer clones/deploy? I can provide a ready-to-deploy repo with Vercel config or a simple Dockerfile.</div>
                 </section>
 
-                <footer className="mt-16 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">© {new Date().getFullYear()} {SITE.name} — Built with React + Tailwind</footer>
+                <footer className="mt-16 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">© {new Date().getFullYear()} {SITE.name}</footer>
             </main>
         </div>
     );
 }
 
-/*
-  SETUP NOTES (paste into your React project):
-  1) Create a React app (Vite or Create React App) and add Tailwind CSS.
-     - CRA: npx create-react-app my-portfolio
-     - Vite: npm create vite@latest my-portfolio --template react
-  2) Install and configure Tailwind (follow official docs):
-     - npm install -D tailwindcss postcss autoprefixer
-     - npx tailwindcss init -p
-     - add tailwind directives to index.css
-  3) Copy this file into src/ as App.jsx (or adjust imports) and ensure index.js renders <App />.
-  4) Replace placeholder links/emails with your real ones.
-  5) Deploy to Vercel or Netlify (drag-and-drop or link the GitHub repo).
 
-  Want me to:
-   - generate a full project tree + package.json + Tailwind config? (I can produce files here)
-   - create a deploy-ready repo structure with a README and a Dockerfile?
-*/
+
